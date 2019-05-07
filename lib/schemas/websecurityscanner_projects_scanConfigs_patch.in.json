@@ -1,0 +1,214 @@
+{
+    "type": "object",
+    "properties": {
+        "name": {
+            "required": true,
+            "type": "string"
+        },
+        "updateMask": {
+            "type": "string"
+        },
+        "alt": {
+            "type": "string",
+            "enum": [
+                "json",
+                "media",
+                "proto"
+            ],
+            "default": "json"
+        },
+        "callback": {
+            "type": "string"
+        },
+        "fields": {
+            "type": "string"
+        },
+        "key": {
+            "type": "string"
+        },
+        "oauth_token": {
+            "type": "string"
+        },
+        "prettyPrint": {
+            "type": "boolean",
+            "default": true
+        },
+        "quotaUser": {
+            "type": "string"
+        },
+        "uploadType": {
+            "type": "string"
+        },
+        "upload_protocol": {
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "A ScanConfig resource contains the configurations to launch a scan.\nnext id: 12",
+            "properties": {
+                "authentication": {
+                    "description": "The authentication configuration. If specified, service will use the\nauthentication configuration during scanning.",
+                    "properties": {
+                        "customAccount": {
+                            "description": "Authentication using a custom account.",
+                            "properties": {
+                                "loginUrl": {
+                                    "description": "Required.\nThe login form URL of the website.",
+                                    "type": "string"
+                                },
+                                "password": {
+                                    "description": "Input only.\nRequired.\nThe password of the custom account. The credential is stored encrypted\nand not returned in any response nor included in audit logs.",
+                                    "type": "string"
+                                },
+                                "username": {
+                                    "description": "Required.\nThe user name of the custom account.",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "googleAccount": {
+                            "description": "Authentication using a Google account.",
+                            "properties": {
+                                "password": {
+                                    "description": "Input only.\nRequired.\nThe password of the Google account. The credential is stored encrypted\nand not returned in any response nor included in audit logs.",
+                                    "type": "string"
+                                },
+                                "username": {
+                                    "description": "Required.\nThe user name of the Google account.",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "type": "object"
+                },
+                "blacklistPatterns": {
+                    "description": "The blacklist URL patterns as described in\nhttps://cloud.google.com/security-scanner/docs/excluded-urls",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "displayName": {
+                    "description": "Required.\nThe user provided display name of the ScanConfig.",
+                    "type": "string"
+                },
+                "latestRun": {
+                    "description": "Latest ScanRun if available.",
+                    "properties": {
+                        "endTime": {
+                            "description": "Output only.\nThe time at which the ScanRun reached termination state - that the ScanRun\nis either finished or stopped by user.",
+                            "format": "google-datetime",
+                            "type": "string"
+                        },
+                        "executionState": {
+                            "description": "Output only.\nThe execution state of the ScanRun.",
+                            "enum": [
+                                "EXECUTION_STATE_UNSPECIFIED",
+                                "QUEUED",
+                                "SCANNING",
+                                "FINISHED"
+                            ],
+                            "type": "string"
+                        },
+                        "hasVulnerabilities": {
+                            "description": "Output only.\nWhether the scan run has found any vulnerabilities.",
+                            "type": "boolean"
+                        },
+                        "name": {
+                            "description": "Output only.\nThe resource name of the ScanRun. The name follows the format of\n'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'.\nThe ScanRun IDs are generated by the system.",
+                            "type": "string"
+                        },
+                        "progressPercent": {
+                            "description": "Output only.\nThe percentage of total completion ranging from 0 to 100.\nIf the scan is in queue, the value is 0.\nIf the scan is running, the value ranges from 0 to 100.\nIf the scan is finished, the value is 100.",
+                            "format": "int32",
+                            "type": "integer"
+                        },
+                        "resultState": {
+                            "description": "Output only.\nThe result state of the ScanRun. This field is only available after the\nexecution state reaches \"FINISHED\".",
+                            "enum": [
+                                "RESULT_STATE_UNSPECIFIED",
+                                "SUCCESS",
+                                "ERROR",
+                                "KILLED"
+                            ],
+                            "type": "string"
+                        },
+                        "startTime": {
+                            "description": "Output only.\nThe time at which the ScanRun started.",
+                            "format": "google-datetime",
+                            "type": "string"
+                        },
+                        "urlsCrawledCount": {
+                            "description": "Output only.\nThe number of URLs crawled during this ScanRun. If the scan is in progress,\nthe value represents the number of URLs crawled up to now.",
+                            "format": "int64",
+                            "type": "string"
+                        },
+                        "urlsTestedCount": {
+                            "description": "Output only.\nThe number of URLs tested during this ScanRun. If the scan is in progress,\nthe value represents the number of URLs tested up to now. The number of\nURLs tested is usually larger than the number URLS crawled because\ntypically a crawled URL is tested with multiple test payloads.",
+                            "format": "int64",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "maxQps": {
+                    "description": "The maximum QPS during scanning. A valid value ranges from 5 to 20\ninclusively. If the field is unspecified or its value is set 0, server will\ndefault to 15. Other values outside of [5, 20] range will be rejected with\nINVALID_ARGUMENT error.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "name": {
+                    "description": "The resource name of the ScanConfig. The name follows the format of\n'projects/{projectId}/scanConfigs/{scanConfigId}'. The ScanConfig IDs are\ngenerated by the system.",
+                    "type": "string"
+                },
+                "schedule": {
+                    "description": "The schedule of the ScanConfig.",
+                    "properties": {
+                        "intervalDurationDays": {
+                            "description": "Required.\nThe duration of time between executions in days.",
+                            "format": "int32",
+                            "type": "integer"
+                        },
+                        "scheduleTime": {
+                            "description": "A timestamp indicates when the next run will be scheduled. The value is\nrefreshed by the server after each run. If unspecified, it will default\nto current server time, which means the scan will be scheduled to start\nimmediately.",
+                            "format": "google-datetime",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "startingUrls": {
+                    "description": "Required.\nThe starting URLs from which the scanner finds site pages.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "targetPlatforms": {
+                    "description": "Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be\nused as a default.",
+                    "items": {
+                        "enum": [
+                            "TARGET_PLATFORM_UNSPECIFIED",
+                            "APP_ENGINE",
+                            "COMPUTE"
+                        ],
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "userAgent": {
+                    "description": "The user agent used during scanning.",
+                    "enum": [
+                        "USER_AGENT_UNSPECIFIED",
+                        "CHROME_LINUX",
+                        "CHROME_ANDROID",
+                        "SAFARI_IPHONE"
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    }
+}

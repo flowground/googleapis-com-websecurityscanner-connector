@@ -1,0 +1,237 @@
+{
+    "title": "Web Security Scanner",
+    "description": "Scans your Compute and App Engine apps for common web vulnerabilities.",
+    "docsUrl": "https://cloud.google.com/security-scanner/",
+    "url": "https://api.apis.guru/v2/specs/googleapis.com/websecurityscanner/v1alpha/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://websecurityscanner.googleapis.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "Oauth2": {
+                "label": "Oauth 2.0 authentication",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://accounts.google.com/o/oauth2/auth"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "websecurityscanner_projects_scanConfigs_delete": {
+            "main": "./lib/actions/websecurityscanner_projects_scanConfigs_delete.js",
+            "title": "Deletes an existing ScanConfig and its child resources.",
+            "description": "Deletes an existing ScanConfig and its child resources.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/websecurityscanner_projects_scanConfigs_delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "websecurityscanner_projects_scanConfigs_scanRuns_findings_get": {
+            "main": "./lib/actions/websecurityscanner_projects_scanConfigs_scanRuns_findings_get.js",
+            "title": "Gets a Finding.",
+            "description": "Gets a Finding.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/websecurityscanner_projects_scanConfigs_scanRuns_findings_get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "websecurityscanner_projects_scanConfigs_patch": {
+            "main": "./lib/actions/websecurityscanner_projects_scanConfigs_patch.js",
+            "title": "Updates a ScanConfig. This method support partial update of a ScanConfig.",
+            "description": "Updates a ScanConfig. This method support partial update of a ScanConfig.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/websecurityscanner_projects_scanConfigs_patch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "websecurityscanner_projects_scanConfigs_start": {
+            "main": "./lib/actions/websecurityscanner_projects_scanConfigs_start.js",
+            "title": "Start a ScanRun according to the given ScanConfig.",
+            "description": "Start a ScanRun according to the given ScanConfig.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/websecurityscanner_projects_scanConfigs_start.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "websecurityscanner_projects_scanConfigs_scanRuns_stop": {
+            "main": "./lib/actions/websecurityscanner_projects_scanConfigs_scanRuns_stop.js",
+            "title": "Stops a ScanRun. The stopped ScanRun is returned.",
+            "description": "Stops a ScanRun. The stopped ScanRun is returned.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/websecurityscanner_projects_scanConfigs_scanRuns_stop.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "websecurityscanner_projects_scanConfigs_scanRuns_crawledUrls_list": {
+            "main": "./lib/actions/websecurityscanner_projects_scanConfigs_scanRuns_crawledUrls_list.js",
+            "title": "List CrawledUrls under a given ScanRun.",
+            "description": "List CrawledUrls under a given ScanRun.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/websecurityscanner_projects_scanConfigs_scanRuns_crawledUrls_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "websecurityscanner_projects_scanConfigs_scanRuns_findingTypeStats_list": {
+            "main": "./lib/actions/websecurityscanner_projects_scanConfigs_scanRuns_findingTypeStats_list.js",
+            "title": "List all FindingTypeStats under a given ScanRun.",
+            "description": "List all FindingTypeStats under a given ScanRun.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/websecurityscanner_projects_scanConfigs_scanRuns_findingTypeStats_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "websecurityscanner_projects_scanConfigs_scanRuns_findings_list": {
+            "main": "./lib/actions/websecurityscanner_projects_scanConfigs_scanRuns_findings_list.js",
+            "title": "List Findings under a given ScanRun.",
+            "description": "List Findings under a given ScanRun.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/websecurityscanner_projects_scanConfigs_scanRuns_findings_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "websecurityscanner_projects_scanConfigs_list": {
+            "main": "./lib/actions/websecurityscanner_projects_scanConfigs_list.js",
+            "title": "Lists ScanConfigs under a given project.",
+            "description": "Lists ScanConfigs under a given project.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/websecurityscanner_projects_scanConfigs_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "websecurityscanner_projects_scanConfigs_create": {
+            "main": "./lib/actions/websecurityscanner_projects_scanConfigs_create.js",
+            "title": "Creates a new ScanConfig.",
+            "description": "Creates a new ScanConfig.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/websecurityscanner_projects_scanConfigs_create.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "websecurityscanner_projects_scanConfigs_scanRuns_list": {
+            "main": "./lib/actions/websecurityscanner_projects_scanConfigs_scanRuns_list.js",
+            "title": "Lists ScanRuns under a given ScanConfig, in descending order of ScanRun\nstop time.",
+            "description": "Lists ScanRuns under a given ScanConfig, in descending order of ScanRun\nstop time.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/websecurityscanner_projects_scanConfigs_scanRuns_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
